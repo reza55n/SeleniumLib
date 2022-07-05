@@ -103,6 +103,7 @@ def js_find_element_by_selector_text_whole(driver, retJsElemName, parentSelector
 
 
 # Sometimes offset is needed to make element visible and clickable
+# Also jsElemName can be something like this: "$('.btn-success')[0]"
 def js_scroll_offseted(driver, jsElemName, offset = 100):
     driver.execute_script(jsElemName + ".scrollIntoView(); window.scrollBy(0," + str(-offset) + ");")
 
