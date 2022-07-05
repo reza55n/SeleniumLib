@@ -119,10 +119,13 @@ def waitNewTitle(driver, new_title):
 def waitElementGone(driver, selector):
     WebDriverWait(driver, waitTimeout).until_not(EC.presence_of_element_located((By.CSS_SELECTOR, selector)))
 
+def waitElementHidden(driver, selector):
+    WebDriverWait(driver, waitTimeout).until(EC.invisibility_of_element_located((By.CSS_SELECTOR, selector)))
+
 def waitNewElement(driver, selector):
     WebDriverWait(driver, waitTimeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, selector)))
 
-# !! Tip: Method `element_to_be_clickable` practically only checks existence  (and visibility),
+# !! Tip: Method `element_to_be_clickable` practically only checks existence (and visibility),
 #         not being clickable! You can use waitElementGone for hovering element, after this method.
 def waitElementClickable(driver, selector):
     WebDriverWait(driver, waitTimeout).until(EC.element_to_be_clickable((By.CSS_SELECTOR, selector)))
