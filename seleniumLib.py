@@ -19,6 +19,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 import datetime
 import math
 
@@ -139,9 +140,10 @@ def waitNewText(driver, text, selector = 'body'):
 
 
 
-# strategy: normal, eager, none
+# strategy: normal, eager, none - In new version of Selenium, desired_capabilities was deprecated and there was no time to re-implement `strategy`. ...
+# ... Also `normal` strategy seems to be safer
 def runFirefox(strategy = 'normal'):
-    caps = DesiredCapabilities().FIREFOX
-    caps["pageLoadStrategy"] = strategy
-    driver = webdriver.Firefox(desired_capabilities=caps)
+    options = Options()
+    options.binary_location=r'C:\Program Files\Mozilla Firefox\firefox.exe'
+    driver = webdriver.Firefox(options=options)
     return driver
